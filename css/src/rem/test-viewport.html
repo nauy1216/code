@@ -4,16 +4,17 @@
   <meta content="telephone=no" name="format-detection"/>
   <!-- 
     参考文档： https://www.cnblogs.com/2050/p/3877280.html
+    参考文档： https://github.com/jawil/blog/issues/21
 
     (1) layout viewport：布局视口
     当不设置viewport时， 由于移动端浏览器要兼容为pc端设计的网页， 所以layout viewport的宽度会设置一个比屏幕宽度像素大的值。
     比如980px，不同的设备浏览器可能会不一样。此时通过window.innerWidth(或者document.documentElement.clientWidth)获取的值是980px, 而不是屏幕可视区的宽度。
     因为移动端屏幕尺寸都比较小的原因， 导致每一像素占有的物理尺寸会很小，所以看起来字体会特别小。
 
-    (2) visual viewport：浏览器可视区域视口
+    (2) visual viewport：浏览器可视区域视口, 浏览器可视区的逻辑像素宽度
     可通过window.outerWidth获取。这里获取到的值是设备逻辑像素。
 
-    (3) ideal viewport：移动设备的理想viewport
+    (3) ideal viewport：移动设备的理想viewport, 移动端可以认为是屏幕的逻辑像素宽度
     现在我们已经有两个viewport了：layout viewport 和 visual viewport。但浏览器觉得还不够，因为现在越来越多的网站都会为移动设备进行单独的设计，所以必须还要有一个能完美适配移动设备的viewport。所谓的完美适配指的是，首先不需要用户缩放和横向滚动条就能正常的查看网站的所有内容；第二，显示的文字的大小是合适，比如一段14px大小的文字，不会因为在一个高密度像素的屏幕里显示得太小而无法看清，理想的情况是这段14px的文字无论是在何种密度屏幕，何种分辨率下，显示出来的大小都是差不多的。当然，不只是文字，其他元素像图片什么的也是这个道理。
     ideal viewport并没有一个固定的尺寸，不同的设备拥有有不同的ideal viewport。所有的iphone的ideal viewport宽度都是320px，无论它的屏幕宽度是320还是640，也就是说，在iphone中，css中的320px就代表iphone屏幕的宽度。
     通过设置width=device-width, initial-scale=1来达到使用理想宽度。
