@@ -1,0 +1,27 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta content="telephone=no" name="format-detection"/>
+  <title>no viewport</title>
+  <style>
+    *,html,body,div,p {
+      padding:0;
+      margin: 0;
+      color: #fff;
+      line-height:1.2;
+    }
+  </style>
+</head>
+<body >
+  <div>
+    <p id="foo" style="width:100px;height:100px;background:rgb(255,169,117)">hello</p>
+    <p id="font" style="width:980px;min-height:100px;background:rgb(0,169,117)">hello</p>
+  </div>
+  <script>
+    document.getElementById('font').innerHTML = ''
+    + "<br>  window.innerWidth: " + window.innerWidth
+    + "<br>  window.outerWidth: " + window.outerWidth
+    + "<br>  document.documentElement.clientWidth: " + document.documentElement.clientWidth
+  </script>
+</body>
+</html>
