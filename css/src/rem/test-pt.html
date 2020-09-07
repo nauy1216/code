@@ -1,0 +1,28 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta content="telephone=no" name="format-detection"/>
+  <meta name="viewport" content="width=width-device, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+  <title>viewport</title>
+  <style>
+    *,html,body,div,p {
+      padding:0;
+      margin: 0;
+      color: #fff;
+      line-height:1.2;
+    }
+  </style>
+</head>
+<body >
+  <div>
+    <p id="foo" style="width:100px;height:100px;background:rgb(255,169,117)"></p>
+    <p id="font" style="width:100pt;height:100pt;background:rgb(0,169,117)"></p>
+  </div>
+  <script>
+    document.getElementById('font').innerHTML = ''
+    + "<br>  window.devicePixelRatio: " + window.devicePixelRatio
+    + "<br>  window.outerWidth: " + window.outerWidth
+    + "<br>  window.outerWidth: " + window.outerWidth
+  </script>
+</body>
+</html>
