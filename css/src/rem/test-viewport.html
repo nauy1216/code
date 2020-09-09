@@ -1,7 +1,8 @@
 <html>
+
 <head>
   <meta charset="UTF-8">
-  <meta content="telephone=no" name="format-detection"/>
+  <meta content="telephone=no" name="format-detection" />
   <!-- 
     参考文档： https://www.cnblogs.com/2050/p/3877280.html
     参考文档： https://github.com/jawil/blog/issues/21
@@ -43,29 +44,45 @@
     (5)在iphone和ipad上，无论你给viewport设的宽的是多少，如果没有指定默认的缩放值，则iphone和ipad会自动计算这个缩放值，
     以达到当前页面不会出现横向滚动条(或者说viewport的宽度就是屏幕的宽度)的目的。
   -->
-  
-  <meta name="viewport" content="width=width-device, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+  <!-- 
+    width设置的式布局视口的大小， width=width-device表示将布局视口的大小设置为理想视口的大小。
+    理想视口的大小由浏览器决定。devicePixelRatio = 屏幕物理像素大小 / 理想视口的大小(逻辑像素) 这个值是固定的。
+
+    initial-scale是相对于理想视口来缩放的。同时设置width和initial-scale时取其中的最大值。
+    initial-scale缩放的是视觉视口的大小。比如initial-scale=0.5，表示视觉视口展示的逻辑像素多了一倍。本质上是每个逻辑像素对应的物理像素小了一倍，
+    在视觉上就是所有的东西都缩小了一倍。
+    当width设置的值大于视觉视口的值时就会出现横向滚动条。
+
+    所以当操作浏览器缩放页面时， 其实操作的是视觉窗口。操作视觉窗口的本质就是动态的变化了一个逻辑像素对应了多少个物理像素。
+   -->
+  <meta name="viewport" content="width=20, initial-scale=0.5, minimum-scale=0.5, maximum-scale=1.0" />
   <title>viewport</title>
   <style>
-    *,html,body,div,p {
-      padding:0;
+    *,
+    html,
+    body,
+    div,
+    p {
+      padding: 0;
       margin: 0;
       color: #fff;
-      line-height:1.2;
+      line-height: 1.2;
     }
   </style>
 </head>
-<body >
+
+<body>
   <div>
-    <p id="foo" style="width:100px;height:100px;background:rgb(255,169,117)">hello</p>
+    <p id="foo" style="width:393px;height:100px;background:rgb(255,169,117)">hello</p>
     <p id="font" style="min-height:1500px;background:rgb(0,169,117)">hello</p>
   </div>
   <script>
-    document.getElementById('font').innerHTML = ''
-    + "<br>  window.innerWidth: " + window.innerWidth
-    + "<br>  window.outerWidth: " + window.outerWidth
-    + "<br>  document.documentElement.clientWidth: " + document.documentElement.clientWidth
-    + "<br>  window.devicePixelRatio: " + window.devicePixelRatio
+    document.getElementById('font').innerHTML = '' +
+      "<br>  window.innerWidth: " + window.innerWidth +
+      "<br>  window.outerWidth: " + window.outerWidth +
+      "<br>  document.documentElement.clientWidth: " + document.documentElement.clientWidth +
+      "<br>  window.devicePixelRatio: " + window.devicePixelRatio
   </script>
 </body>
+
 </html>
