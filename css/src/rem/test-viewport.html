@@ -56,6 +56,7 @@
     所以当操作浏览器缩放页面时， 其实操作的是视觉窗口。操作视觉窗口的本质就是动态的变化了一个逻辑像素对应了多少个物理像素。
    -->
   <meta name="viewport" content="width=20, initial-scale=0.5, minimum-scale=0.5, maximum-scale=1.0" />
+  <!-- <script src="rem.js"></script> -->
   <title>viewport</title>
   <style>
     *,
@@ -77,11 +78,13 @@
     <p id="font" style="min-height:1500px;background:rgb(0,169,117)">hello</p>
   </div>
   <script>
+    console.log(document.querySelector('meta[name=viewport]').outerHTML, 'll')
     document.getElementById('font').innerHTML = '' +
       "<br>  window.innerWidth: " + window.innerWidth +
       "<br>  window.outerWidth: " + window.outerWidth +
       "<br>  document.documentElement.clientWidth: " + document.documentElement.clientWidth +
-      "<br>  window.devicePixelRatio: " + window.devicePixelRatio
+      "<br>  window.devicePixelRatio: " + window.devicePixelRatio +
+      "<br>  viewport: " + document.querySelector('meta[name=viewport]').outerHTML
   </script>
 </body>
 
