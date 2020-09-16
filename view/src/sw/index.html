@@ -8,7 +8,9 @@
         .then(function (reg) {
           console.log('serviceWorker 注册成功', reg);
           // navigator.serviceWorker.controller && navigator.serviceWorker.controller.postMessage("this message is from page");
-          reg.active.postMessage("this message is from page, to sw")
+          if (reg.active) {
+            reg.active.postMessage("this message is from page, to sw")
+          }
         })
         .catch(function (err) {
           console.log('serviceWorker 注册失败', err);
