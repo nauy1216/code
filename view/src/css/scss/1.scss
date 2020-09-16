@@ -1,0 +1,40 @@
+@debug 10em + 12em;
+@warn "warning";
+.parent {
+    color: green;
+    @at-root .child {
+        color: red
+    }
+}
+
+.test-if {
+    @if 1 > 0 {
+        border: 1px solid #000;
+    }
+    @if 1 > 2 {
+        border: 1px solid #000;
+    }
+}
+
+@for $i from 1 through 3 {
+    @warn $i;
+    .item-#{$i} { width: 2em * $i; }
+}
+
+@each $animal in puma, sea-slug, egret, salamander {
+    .#{$animal}-icon {
+      background-image: url('/images/#{$animal}.png');
+    }
+}
+
+@each $header, $size in (h1: 2em, h2: 1.5em, h3: 1.2em) {
+    #{$header} {
+      font-size: $size;
+    }
+}
+
+$i: 6;
+@while $i > 0 {
+  .item-#{$i} { width: 2em * $i; }
+  $i: $i - 2;
+}

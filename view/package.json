@@ -4,11 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "http-server src"
+    "dev": "http-server src",
+    "node-sass": "node-sass  ./src/css/scss --output ./src/css/scss/output"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "http-server": "^0.12.3"
+  },
+  "devDependencies": {
+    "node-sass": "^4.14.1"
   }
 }
