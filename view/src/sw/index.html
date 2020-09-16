@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html manifest="example.appcache">
+<head>
+  <meta charset="utf-8" />
+  <script>
+    if ('serviceWorker' in window.navigator) {
+      navigator.serviceWorker.register('./sw.js')
+        .then(function (reg) {
+          console.log('serviceWorker 注册成功', reg);
+          // navigator.serviceWorker.controller && navigator.serviceWorker.controller.postMessage("this message is from page");
+          reg.active.postMessage("this message is from page, to sw")
+        })
+        .catch(function (err) {
+          console.log('serviceWorker 注册失败', err);
+        });
+
+      navigator.serviceWorker.addEventListener('message', function (e) {
+        console.log(e.data); // this message is from sw.js, to page
+      });
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
