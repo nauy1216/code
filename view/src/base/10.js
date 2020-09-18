@@ -68,13 +68,12 @@ class Promised {
     this.rejectCall = rejectCall
     return new Promised(resolve => {
       callQueue.push(this, () => {
-        // console.log('this.returnValue', this.returnValue)
         resolve()
       })
     })
   }
 
-  catch (rejectCall) {
+  catch(rejectCall) {
     this.rejectCall = rejectCall
     return new Promised(resolve => {
       callQueue.push(this, () => {
