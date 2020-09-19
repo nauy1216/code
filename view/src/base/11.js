@@ -75,7 +75,7 @@ function Promise(excutor) {
  * @param  {[type]} reject    promise2的reject方法
  */
 function resolvePromise(promise2, x, resolve, reject) {
-  if (promise2 === x) {  // 如果从onFulfilled中返回的x 就是promise2 就会导致循环引用报错
+  if (promise2 === x) { // 如果从onFulfilled中返回的x 就是promise2 就会导致循环引用报错
     return reject(new TypeError('循环引用'));
   }
 
@@ -284,18 +284,41 @@ Promise.deferred = function () { // 延迟对象
 
 
 
-let p1 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    reject(new Error('fail'))
-  }, 30000)
-})
+// let p1 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     reject(new Error('fail'))
+//   }, 30000)
+// })
+// debugger
+// let p2 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve(p1)
+//   }, 1000)
+// }).then(res => {
+//   console.log(res, 'res')
+// }).catch(err => {
+//   console.log(err, 'err')
+// })
 
-let p2 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve(p1)
-  }, 1000)
-}).then(res => {
-  console.log(res, 'res')
-}).catch(err => {
-  console.log(err, 'err')
+// Promise.resolve().then(() => {
+//   return new Promise(resolve => {
+//     setTimeout(() => {
+//       resolve('new Promise')
+//     }, 3000);
+//   })
+// }).then(res => {
+//   console.log('res', res)
+// })
+
+new Promise((resolve) => {
+  // throw new Error('error with me')
+  resolve(new Error('error with me'))
+}).then(data => {
+  console.log('1')
+}).then(data => {
+  console.log('2', data)
+}).catch(data => {
+  console.log('e1', data)
+}).catch(data => {
+  console.log('e2', data)
 })

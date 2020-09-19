@@ -20,8 +20,9 @@ function flush() {
       promise = callQueue.shift()
       callback = callQueue.shift()
       try {
-        if (typeof promise[callback] === 'function') {
-          promise[callback](promise.promiseValue)
+        if (callback === 'resolveCall' || callback === 'rejectCall') {
+
+          promise.returnValue = promise[callback](promise.promiseValue)
         } else if (typeof callback === 'function') {
           callback(promise.promiseValue)
         }
@@ -38,6 +39,8 @@ class Promised {
     this.promiseStatus = Status.pending
     this.promiseValue = undefined
     this.returnValue = undefined
+    this.resolveCall = []
+    this.rejectCall = []
 
     function resolve(data) {
       if (this.promiseStatus === Status.pending) {
@@ -57,30 +60,55 @@ class Promised {
       }
     }
     try {
-      this.returnValue = callback(resolve.bind(this), reject.bind(this))
+      callback(resolve.bind(this), reject.bind(this))
     } catch (e) {
       reject.call(this, e)
     }
   }
 
   then(resolveCall, rejectCall) {
-    this.resolveCall = resolveCall
-    this.rejectCall = rejectCall
-    return new Promised(resolve => {
-      callQueue.push(this, () => {
-        resolve()
-      })
+    let _this = this
+    return new Promised((resolve, reject) => {
+      let result
+      if (resolveCall) {
+        if (_this.promiseStatus === Status.pending) {
+          this.resolveCall.push(_this, function () {
+            try {
+              result = resolveCall()
+            } catch (e) {
+              reject(e)
+            }
+          })
+        } else if (_this.promiseStatus === Status.resolved) {
+          try {
+            result = resolveCall()
+          } catch (e) {
+            reject(e)
+          }
+        }
+      }
+      if (rejectCall) {
+        if (_this.promiseStatus === Status.pending) {
+          this.rejectCall.push(_this, function () {
+            try {
+              rejectCall()
+            } catch (e) {
+              reject(e)
+            }
+          })
+        } else if (_this.promiseStatus === Status.rejected) {
+          try {
+            result = resolveCall()
+          } catch (e) {
+            reject(e)
+          }
+        }
+      }
     })
   }
 
-  catch(rejectCall) {
-    this.rejectCall = rejectCall
-    return new Promised(resolve => {
-      callQueue.push(this, () => {
-        // console.log('this.returnValue', this.returnValue)
-        resolve()
-      })
-    })
+  catch (rejectCall) {
+    return this.then(null, rejectCall)
   }
 }
 
