@@ -40,6 +40,7 @@ function Observer(data) {
       let dep = DepMap.get(prop)
       if (dep) {
         dep.notify()
+        DepMap.delete(prop)
       }
       console.log('deleteProperty', obj, prop)
     }
