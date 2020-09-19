@@ -96,20 +96,16 @@ function effect(callback) {
   }
   return () => {
     callback._effect.cancel()
+    callback._effect = undefined
   }
 }
 
-let p = Observer({
-  a: 1,
-  b: {
-    c: 1
-  }
-})
+let p = Observer([1, 2])
 let cancel = effect(() => {
-  console.log('effect ===> p.a', p.a)
+  console.log('effect ===> p[0]', p[0])
 })
 // // console.log('p.b.c', p.b.c)
 // // cancel()
 setTimeout(() => {
-  delete p.a
+  p[0] = 6
 }, 2000)
