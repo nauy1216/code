@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>css</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <p>
+        (1)容器的属性：
+        flex-direction、
+        flex-wrap、
+        flex-flow、
+        justify-content、
+        align-items、
+        align-content
+        <br>
+        (2)项目的属性：
+        order
+        flex-grow
+        flex-shrink
+        flex-basis
+        flex
+        align-self
+    </p>
+    <div style="height: 200px; display: flex; border: 1px solid red;">
+        项目高度不设置时默认是容器的高度
+        <div style="background: green;"></div>
+        <div style="background: gray;"></div>
+    </div>
+    <div style="height: 200px; display: flex; border: 1px solid red;">
+        <div style="background: green; flex-grow: 1;">
+            设置flex-grow自适应宽度
+        </div>
+        <div style="background: gray; flex-basis: 200px;">
+            flex-basis设置具体的宽度
+        </div>
+    </div>
+    <div style="height: 200px; display: flex; border: 1px solid red;">
+        <div style="background: green; flex: 1 0 500px;">
+            当所有子元素的宽度flex-shrink都设置为0时， 容器的最小宽度的所有子元素设置的宽度之和。
+        </div>
+        <div style="background: gray; flex: 0 0 200px;">
+            
+        </div>
+    </div>
+    <div style="height: 200px; display: flex; border: 1px solid red;">
+        <div style="background: green; height: 100px; flex-grow: 1;">
+            项目设置了高度
+        </div>
+        <div style="background: gray; flex-basis: 200px;">
+        </div>
+    </div>
+    <div style="height: 200px; display: flex; align-items: center; border: 1px solid red;">
+        <div style="background: green; height: 100px; flex-grow: 1;">
+            容器设置align-items: center;垂直居中
+        </div>
+        <div style="background: gray; flex-basis: 200px;">
+            容器设置align-items后项目的height不再是默认的容器的高度了
+        </div>
+    </div>
+
+    <div style="height: 200px; display: flex; flex-direction: column; border: 1px solid red;">
+        <div style="background: green; height:20px; flex-grow: 1;">
+            容器设置flex-direction: column
+        </div>
+        <div style="background: gray; flex-basis: 30px;">
+            容器设置align-items后项目的height不再是默认的容器的高度了
+        </div>
+    </div>
+
+    <div style="height: 200px; display: flex; flex-direction: column-reverse; border: 1px solid red;">
+        <div style="background: green; height:20px; flex-grow: 1;">
+            容器设置flex-direction: column-reverse
+        </div>
+        <div style="background: gray; flex-basis: 30px;">
+            容器设置align-items后项目的height不再是默认的容器的高度了
+        </div>
+    </div>
+</body>
