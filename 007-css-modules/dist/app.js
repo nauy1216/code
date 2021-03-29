@@ -21,14 +21,16 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".button__button--3G3aF {\n  border: none;\n  padding: 10px 20px;\n  border: 4px;\n  outline: none; }\n\n.button__red--3ElRc {\n  background: red; }\n\n.button__green--3Wf0V {\n  background: green; }\n\n.button__container--7y1Pj .button__bigButton--e4erE {\n  width: 300px;\n  height: 60px; }\n", "",{"version":3,"sources":["webpack://./src/button.scss"],"names":[],"mappings":"AAAA;EACI,YAAY;EACZ,kBAAkB;EAClB,WAAW;EACX,aAAa,EAAA;;AAEjB;EACI,eAAe,EAAA;;AAGnB;EACI,iBAAiB,EAAA;;AAGrB;EAEQ,YAAY;EACZ,YAAY,EAAA","sourcesContent":[".button {\r\n    border: none;\r\n    padding: 10px 20px;\r\n    border: 4px;\r\n    outline: none;\r\n}\r\n.red {\r\n    background: red;\r\n}\r\n\r\n.green {\r\n    background: green;\r\n}\r\n\r\n.container {\r\n    .bigButton {\r\n        width: 300px;\r\n        height: 60px;\r\n    }\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".button__button--3G3aF {\n  border: none;\n  padding: 10px 20px;\n  border: 4px;\n  outline: none; }\n\n.button__red--3ElRc {\n  background: red; }\n\n.button__green--3Wf0V {\n  background: green; }\n\n.button__container--7y1Pj .button__bigButton--e4erE {\n  width: 300px;\n  height: 60px; }\n\n.button__code--U0v32 {\n  padding: 20px;\n  background: #e0e0e0;\n  border-radius: 10px; }\n", "",{"version":3,"sources":["webpack://./src/button.scss"],"names":[],"mappings":"AAAA;EACI,YAAY;EACZ,kBAAkB;EAClB,WAAW;EACX,aAAa,EAAA;;AAEjB;EACI,eAAe,EAAA;;AAGnB;EACI,iBAAiB,EAAA;;AAGrB;EAEQ,YAAY;EACZ,YAAY,EAAA;;AAIpB;EACI,aAAa;EACb,mBAAmB;EACnB,mBAAmB,EAAA","sourcesContent":[".button {\r\n    border: none;\r\n    padding: 10px 20px;\r\n    border: 4px;\r\n    outline: none;\r\n}\r\n.red {\r\n    background: red;\r\n}\r\n\r\n.green {\r\n    background: green;\r\n}\r\n\r\n.container {\r\n    .bigButton {\r\n        width: 300px;\r\n        height: 60px;\r\n    }\r\n}\r\n\r\n.code {\r\n    padding: 20px;\r\n    background: #e0e0e0;\r\n    border-radius: 10px;\r\n}\r\n\r\n$primary-color: #f40;\r\n \r\n:export {\r\n  primaryColor: $primary-color;\r\n}\r\n\r\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
+	"primaryColor": "#f40",
 	"button": "button__button--3G3aF",
 	"red": "button__red--3ElRc",
 	"green": "button__green--3Wf0V",
 	"container": "button__container--7y1Pj",
-	"bigButton": "button__bigButton--e4erE"
+	"bigButton": "button__bigButton--e4erE",
+	"code": "button__code--U0v32"
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -542,6 +544,10 @@ document.body.innerHTML = `
 <button class="${_button_scss__WEBPACK_IMPORTED_MODULE_0__.default.button} ${_button_scss__WEBPACK_IMPORTED_MODULE_0__.default.red}">button</button>
 <button class="${_button_scss__WEBPACK_IMPORTED_MODULE_0__.default.button} ${_button_scss__WEBPACK_IMPORTED_MODULE_0__.default.green}">button</button>
 <button class="${_button_scss__WEBPACK_IMPORTED_MODULE_0__.default.button} ${_button_scss__WEBPACK_IMPORTED_MODULE_0__.default.yellow} ${_button_scss__WEBPACK_IMPORTED_MODULE_0__.default.bigButton}">button</button>
+<h1>css module</h1>
+<pre class="${_button_scss__WEBPACK_IMPORTED_MODULE_0__.default.code}">
+${JSON.stringify(_button_scss__WEBPACK_IMPORTED_MODULE_0__.default, null, 2)}
+</pre>
 </div>
 `
 })();

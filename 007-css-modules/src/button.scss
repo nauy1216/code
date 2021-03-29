@@ -18,3 +18,16 @@
         height: 60px;
     }
 }
+
+.code {
+    padding: 20px;
+    background: #e0e0e0;
+    border-radius: 10px;
+}
+
+$primary-color: #f40;
+ 
+:export {
+  primaryColor: $primary-color;
+}
+

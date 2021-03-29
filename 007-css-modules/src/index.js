@@ -6,5 +6,9 @@ document.body.innerHTML = `
 <button class="${button.button} ${button.red}">button</button>
 <button class="${button.button} ${button.green}">button</button>
 <button class="${button.button} ${button.yellow} ${button.bigButton}">button</button>
+<h1>css module</h1>
+<pre class="${button.code}">
+${JSON.stringify(button, null, 2)}
+</pre>
 </div>
 `
