@@ -1,0 +1,20 @@
+.button {
+    border: none;
+    padding: 10px 20px;
+    border: 4px;
+    outline: none;
+}
+.red {
+    background: red;
+}
+
+.green {
+    background: green;
+}
+
+.container {
+    .bigButton {
+        width: 300px;
+        height: 60px;
+    }
+}
